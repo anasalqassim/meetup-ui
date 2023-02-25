@@ -33,7 +33,7 @@ function AllMeetupsPage() {
       'https://meetup-backend.herokuapp.com/api/v1/meetup',
       config
       ).then((response) => {
-            const data = response.data.meetups
+            const data = response.data.meetUps
             // if(response.data.state){
             //   setError(response.data.state)
             // }
