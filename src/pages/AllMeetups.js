@@ -40,7 +40,6 @@ function AllMeetupsPage() {
               
                 setError(response.data.state)
               }
-              setError(response.data.state)
             }
             
             
