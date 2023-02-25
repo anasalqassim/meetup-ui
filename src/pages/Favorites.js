@@ -16,11 +16,12 @@ function FavoritesPage() {
   if(!user){
     history.replace('/login')
   }
-
+  
 
   if (favoritesCtx.totalFavorites === 0) {
     content = <p>You got no favorites yet. Start adding some?</p>;
   } else {
+    console.log("fav",favoritesCtx.favorites)
     content = <MeetupList meetups={favoritesCtx.favorites} />;
   }
 

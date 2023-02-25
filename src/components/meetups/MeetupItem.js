@@ -6,21 +6,14 @@ import FavoritesContext from '../../store/favorites-context';
 
 function MeetupItem(props) {
   const favoritesCtx = useContext(FavoritesContext);
-
+  console.log("it",props)
   const itemIsFavorite = favoritesCtx.itemIsFavorite(props.id);
 
   function toggleFavoriteStatusHandler() {
     if (itemIsFavorite) {
       favoritesCtx.removeFavorite(props.id);
     } else {
-      favoritesCtx.addFavorite({
-        id: props.id,
-        title: props.title,
-        description: props.description,
-        imgUrl: props.imgUrl,
-        address: props.address,
-        meetDate:props.meetDate
-      });
+      favoritesCtx.addFavorite(props);
     }
   }
 
@@ -28,11 +21,13 @@ function MeetupItem(props) {
     <li className={classes.item}>
       <Card>
         <div className={classes.image}>
-          <img src={props.image} alt={props.title} />
+          <img src={props.imgUrl} alt={props.title} />
         </div>
         <div className={classes.content}>
           <h3>{props.title}</h3>
+          
           <address>{props.address}</address>
+          <span>{props.meetupDate}</span>
           <p>{props.description}</p>
         </div>
         <div className={classes.actions}>

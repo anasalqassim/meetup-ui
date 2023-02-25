@@ -24,7 +24,7 @@ function NewMeetupForm(props) {
       imgUrl: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
-      meetData:enteredDate
+      meetupDate:enteredDate
     };
 
     props.onAddMeetup(meetupData);
@@ -47,7 +47,7 @@ function NewMeetupForm(props) {
         </div>
         <div className={classes.control}>
           <label htmlFor='date'>Meetup Date</label>
-          <input type='date' required id='date' ref={addressInputRef} />
+          <input type='date' required id='date' ref={dateInputRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor='description'>Description</label>
