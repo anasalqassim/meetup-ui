@@ -34,10 +34,10 @@ function AllMeetupsPage() {
       config
       ).then((response) => {
             const data = response.data.meetUps
-            // if(response.data.state){
-            //   setError(response.data.state)
-            // }
-            console.log(response)
+            if(response.data.state.startWith('sorry')){
+              setError(response.data.state)
+            }
+            
             
             const meetups = [];
             if(data){

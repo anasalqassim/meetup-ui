@@ -6,13 +6,14 @@ import FavoritesContext from '../../store/favorites-context';
 
 function MeetupItem(props) {
   const favoritesCtx = useContext(FavoritesContext);
-  console.log("it",props)
+  
   const itemIsFavorite = favoritesCtx.itemIsFavorite(props.id);
 
   function toggleFavoriteStatusHandler() {
     if (itemIsFavorite) {
       favoritesCtx.removeFavorite(props.id);
     } else {
+      console.log("it",props)
       favoritesCtx.addFavorite(props);
     }
   }

@@ -21,8 +21,9 @@ function FavoritesPage() {
   if (favoritesCtx.totalFavorites === 0) {
     content = <p>You got no favorites yet. Start adding some?</p>;
   } else {
-    console.log("fav",favoritesCtx.favorites)
-    content = <MeetupList meetups={favoritesCtx.favorites} />;
+    const data = favoritesCtx.favorites
+    console.log(data)
+    content = <MeetupList meetups={data} />;
   }
 
   return (
