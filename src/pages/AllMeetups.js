@@ -34,7 +34,12 @@ function AllMeetupsPage() {
       config
       ).then((response) => {
             const data = response.data.meetUps
-            if(response.data.state.startWith('sorry')){
+            if(response.data.state){
+             
+              if(response.data.state.startsWith('sorry')){
+              
+                setError(response.data.state)
+              }
               setError(response.data.state)
             }
             
