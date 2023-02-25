@@ -15,7 +15,7 @@ function MeetupList(props) {
           title={meetup.title}
           address={meetup.address}
           description={meetup.description}
-          meetupDate={meetup.meetDate}
+          meetDate={meetup.meetDate}
         />
       ))}
     </ul>

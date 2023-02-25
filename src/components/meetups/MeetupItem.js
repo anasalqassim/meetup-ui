@@ -28,7 +28,7 @@ function MeetupItem(props) {
           <h3>{props.title}</h3>
           
           <address>{props.address}</address>
-          <span>{props.meetupDate}</span>
+          <span>{props.meetDate}</span>
           <p>{props.description}</p>
         </div>
         <div className={classes.actions}>
