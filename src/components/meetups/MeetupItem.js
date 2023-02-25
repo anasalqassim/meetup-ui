@@ -17,8 +17,9 @@ function MeetupItem(props) {
         id: props.id,
         title: props.title,
         description: props.description,
-        image: props.image,
+        imgUrl: props.imgUrl,
         address: props.address,
+        meetDate:props.meetDate
       });
     }
   }

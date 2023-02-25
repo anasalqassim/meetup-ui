@@ -17,6 +17,7 @@ function FavoritesPage() {
     history.replace('/login')
   }
 
+
   if (favoritesCtx.totalFavorites === 0) {
     content = <p>You got no favorites yet. Start adding some?</p>;
   } else {

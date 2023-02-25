@@ -17,14 +17,14 @@ function NewMeetupForm(props) {
     const enteredImage = imageInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
-    const enteredDate = descriptionInputRef.current.value;
+    const enteredDate = dateInputRef.current.value;
 
     const meetupData = {
       title: enteredTitle,
       imgUrl: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
-      meetupData:enteredDate
+      meetData:enteredDate
     };
 
     props.onAddMeetup(meetupData);
