@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import Card from '../../ui/Card';
 import classes from '../../auth/signup/RegisterForm.module.css';
@@ -11,12 +11,12 @@ function RegisterForm(props) {
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+  const [inputError,setInputError] = useState(null)
 
   const {isLoading,error} = props.state
 
   function submitHandler(event) {
     event.preventDefault();
-
 
     const enteredFirstName = firstNameRef.current.value;
     const enteredLastName = lastNameRef.current.value;
@@ -24,14 +24,21 @@ function RegisterForm(props) {
     const enteredPassword = passwordRef.current.value;
     const enteredConfirmPassword = confirmPasswordRef.current.value;
 
-    const UserData = {
-      firstname: enteredFirstName,
-      lastname: enteredLastName,
-      email: enteredEmail,
-      password: enteredPassword,
-    };
+    if(enteredPassword !== enteredConfirmPassword){
+      setInputError("Password and confirm password dose not match")
+    }else{
+      setInputError(null)
+      const UserData = {
+        firstname: enteredFirstName,
+        lastname: enteredLastName,
+        email: enteredEmail,
+        password: enteredPassword,
+      };
 
-    props.onRegister(UserData);
+      props.onRegister(UserData);
+    }
+
+    
   }
 
   return (
@@ -50,6 +57,7 @@ function RegisterForm(props) {
           <label htmlFor='email'>Email Address</label>
           <input type='email' required id='email' ref={emailRef} />
         </div>
+        {inputError && <Alert variant='danger'>{inputError}</Alert>}
         <div className={classes.control}>
           <label htmlFor='password'>Password</label>
           <input type='password' required id='password' ref={passwordRef} />
