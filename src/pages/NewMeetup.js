@@ -25,7 +25,7 @@ function NewMeetupPage() {
    
   
     axios.post( 
-    'http://localhost:8080/api/v1/meetup',
+    'https://meetup-backend.herokuapp.com/api/v1/meetup',
     body,
     config
     ).then(() => {

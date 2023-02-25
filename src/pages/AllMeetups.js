@@ -30,7 +30,7 @@ function AllMeetupsPage() {
       }
     };
     axios.get( 
-      'http://localhost:8080/api/v1/meetup',
+      'https://meetup-backend.herokuapp.com/api/v1/meetup',
       config
       ).then((response) => {
             const data = response.data.meetups
