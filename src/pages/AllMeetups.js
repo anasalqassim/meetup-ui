@@ -61,7 +61,7 @@ function AllMeetupsPage() {
           })
       .catch((error) => {
         console.log(error)
-        setError(error.message)
+        setError(error.response.data.message)
         setIsLoading(false)
       });
   }
