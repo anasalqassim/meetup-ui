@@ -4,13 +4,13 @@ import { Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import MeetupList from '../components/meetups/MeetupList';
 import { useAuthContext } from '../hooks/useAuthContext';
-
+import {useLogout} from '../hooks/useLogout'
 
 function AllMeetupsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedMeetups, setLoadedMeetups] = useState([]);
   const [error, setError] = useState(null);
-
+  const {logout} = useLogout()
   
   const history = useHistory()
   const {user} = useAuthContext()
@@ -61,7 +61,10 @@ function AllMeetupsPage() {
           })
       .catch((error) => {
         console.log(error)
-        setError(error.response.data.message)
+        setError(error.response.data.message +" lets try login again")
+        setTimeout(() =>{
+          logout()
+        }, 3000)
         setIsLoading(false)
       });
   }
