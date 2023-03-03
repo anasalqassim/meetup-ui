@@ -43,7 +43,7 @@ function MeetupList(props) {
     setIsSorting(false);
   }, [meetups]);
 
-  
+  console.log(meetups)
   return (
     <>
       <div className={classes.sortButtonDiv}>
@@ -54,9 +54,11 @@ function MeetupList(props) {
       ) : (
         <ul className={classes.list}>
           {meetups.map((meetup) => (
+            
             <MeetupItem
-              key={meetup.id}
-              id={meetup.id}
+              key={meetup.meetupId}
+              id={meetup.meetupId}
+              meetupId = {meetup.meetupId}
               imgUrl={meetup.imgUrl}
               title={meetup.title}
               address={meetup.address}

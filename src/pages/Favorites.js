@@ -4,11 +4,11 @@ import FavoritesContext from '../store/favorites-context';
 import MeetupList from '../components/meetups/MeetupList';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useHistory } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
 
 function FavoritesPage() {
   const favoritesCtx = useContext(FavoritesContext);
-
   let content;
 
   const history = useHistory()
@@ -18,6 +18,8 @@ function FavoritesPage() {
   }
   
 
+  
+
   if (favoritesCtx.totalFavorites === 0) {
     content = <p>You got no favorites yet. Start adding some?</p>;
   } else {
@@ -25,6 +27,7 @@ function FavoritesPage() {
     console.log(data)
     content = <MeetupList meetups={data} />;
   }
+
 
   return (
     <section>
