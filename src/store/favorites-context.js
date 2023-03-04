@@ -58,33 +58,30 @@ export function FavoritesContextProvider(props) {
 },[user,userFavorites])
  
   function addFavoriteHandler(favoriteMeetup) {
-    
-    
-    
-    
-    
       
+    if(!itemIsFavoriteHandler(favoriteMeetup.meetupId)){
+      const config = {
+        headers: { 
+          Authorization: `Bearer ${user.token}`
+        }
+      };
+      axios.get( 
+        `https://meetup-backend.herokuapp.com/api/v1/meetup/${favoriteMeetup.meetupId}`,
+        config
+        ).then((data) =>{
+          console.log(data)
+          setUserFavorites((prevUserFavorites) => {
+      
+            return prevUserFavorites.concat(favoriteMeetup);
+          });
+        })
+        .catch((error) =>{
+          console.log(error)
+        })
+    }
+  
     
-    setUserFavorites((prevUserFavorites) => {
-      if(!itemIsFavoriteHandler(favoriteMeetup.meetupId)){
-        const config = {
-          headers: { 
-            Authorization: `Bearer ${user.token}`
-          }
-        };
-        axios.get( 
-          `https://meetup-backend.herokuapp.com/api/v1/meetup/${favoriteMeetup.meetupId}`,
-          config
-          ).then((data) =>{
-            console.log(data)
-          })
-          .catch((error) =>{
-            console.log(error)
-          })
-      }
     
-      return prevUserFavorites.concat(favoriteMeetup);
-    });
   }
 
   function removeFavoriteHandler(meetupId) {
@@ -102,12 +99,13 @@ export function FavoritesContextProvider(props) {
         config
         ).then((data) =>{
           console.log(data)
+          //setUserFavorites(prevUserFavorites.filter(meetup => meetup.id !== meetupId))
           
         })
         .catch((error) =>{
           console.log(error)
         })
-        setUserFavorites(prevUserFavorites.filter(meetup => meetup.id !== meetupId))
+        
       return prevUserFavorites.filter(meetup => meetup.id !== meetupId);
     });
   }
